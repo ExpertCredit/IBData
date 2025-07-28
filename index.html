@@ -933,60 +933,65 @@
 			    }
 			
 				@media (max-width: 768px) {
-				    .about-image {
-				        display: flex;
-				        justify-content: center;
-				        align-items: center;
-				    }
+				  .about-image {
+				    display: flex;
+				    justify-content: center;
+				    align-items: center;
+				    padding: 0;
+				  }
 
-				    .circular-image {
-				        width: 110vw;
-				        height: 110vw;
-				        border-radius: 50%;
-				        background-color: #f5f5f5;
-				        padding: 1rem;
-				        box-sizing: border-box;
-				        display: flex;
-				        align-items: center;
-				        justify-content: center;
-				        text-align: center;
-				        overflow: hidden;
-				    }
+				  .circular-image {
+				    width: 90vw;
+				    height: 90vw;
+				    border-radius: 50%;
+				    background: linear-gradient(to bottom, #2c2f86, #1e2761);
+				    display: flex;
+				    align-items: center;
+				    justify-content: center;
+				    overflow: hidden;
+				    padding: 10px;
+				    box-sizing: border-box;
+				    text-align: center;
+				  }
 
-				    .circular-content {
-				        max-width: 83%;
-				        word-wrap: break-word;
-				        overflow-wrap: break-word;
-				    }
+				  .circular-content {
+				    width: 100%;
+				    height: 100%;
+				    overflow: hidden;
+				    display: flex;
+				    flex-direction: column;
+				    justify-content: center;
+				    align-items: center;
+				  }
 
-				    .circular-content h3 {
-				        font-size: 1rem;
-				        margin-bottom: 0.5rem;
-				    }
+				  .circular-content h3 {
+				    font-size: 1.1rem;
+				    margin-bottom: 5px;
+				    color: #fff;
+				  }
 
-				    .circular-content p {
-				        font-size: 0.8rem;
-				        margin-bottom: 1rem;
-				    }
+				  .circular-content p {
+				    font-size: 0.9rem;
+				    margin-bottom: 10px;
+				    color: #ccc;
+				  }
 
-				    .stat-value {
-				        font-size: 1.2rem;
-				        font-weight: bold;
-				    }
+				  .stat-item {
+				    margin-top: 5px;
+				  }
 
-				    .stat-label {
-				        font-size: 0.7rem;
-				    }
+				  .stat-value {
+				    font-size: 1.4rem;
+				    font-weight: bold;
+				    color: #00f5ff;
+				  }
 
-				    .stats {
-				        display: flex;
-				        flex-direction: column;
-				        align-items: center;
-				        gap: 0.4rem;
-				    }
+				  .stat-label {
+				    font-size: 0.8rem;
+				    color: #aaa;
+				  }
 				}
-				
-				
+					
         
         
         @media (max-width: 576px) {
