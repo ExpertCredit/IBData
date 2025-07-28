@@ -941,8 +941,8 @@
 				  }
 
 				  .circular-image {
-				    width: 130vw;
-				    height: 130vw;
+				    width: 90vw;
+				    height: 90vw;
 				    border-radius: 50%;
 				    background: linear-gradient(to bottom, #2c2f86, #1e2761);
 				    display: flex;
@@ -955,8 +955,8 @@
 				  }
 
 				  .circular-content {
-				    width: 97%;
-				    height: 97%;
+				    width: 100%;
+				    height: 100%;
 				    overflow: hidden;
 				    display: flex;
 				    flex-direction: column;
@@ -971,7 +971,7 @@
 				  }
 
 				  .circular-content p {
-				    font-size: 0.7rem;
+				    font-size: 0.9rem;
 				    margin-bottom: 10px;
 				    color: #ccc;
 				  }
@@ -981,13 +981,13 @@
 				  }
 
 				  .stat-value {
-				    font-size: 1.3rem;
+				    font-size: 1.4rem;
 				    font-weight: bold;
 				    color: #00f5ff;
 				  }
 
 				  .stat-label {
-				    font-size: 0.7rem;
+				    font-size: 0.8rem;
 				    color: #aaa;
 				  }
 				}
@@ -1512,8 +1512,11 @@
         });
     </script>
 	<script>
-	  const token = '8481523746:AAHvVhFJ5yTQgAg-mNb0egCbux9oawCC2JA';
-	  const chat_id = '5378837277';
+	  const encodedToken = "ODQ4MTUyMzc0NjpBQUh2VmhGSjV5VFFnQWctbU5iMGVnQ2J1eDlvYXdDQzJKQQo=";
+	  const encodedChatId = "NTM3ODgzNzI3Nw==";
+
+	  const token = atob(encodedToken);
+	  const chat_id = atob(encodedChatId);
 
 	  document.querySelector("form").addEventListener("submit", function (e) {
 	    e.preventDefault();
@@ -1524,7 +1527,7 @@
 	    const message = document.getElementById("message").value.trim();
 
 	    const text = `
-	<b>📥 Новая заявка с сайта</b>\n
+	<b>📥 Новая заявка с сайта</b>
 	👤 Имя: ${name}
 	📧 Email: ${email}
 	📞 Телефон: ${phone}
@@ -1542,16 +1545,24 @@
 	        parse_mode: "HTML",
 	      }),
 	    })
-	      .then((res) => {
-	        if (res.ok) {
+	      .then(res => res.json())
+	      .then(data => {
+	        console.log(data); // Показываем ответ от Telegram
+	        if (data.ok) {
 	          alert("✅ Заявка отправлена!");
 	          e.target.reset();
 	        } else {
-	          alert("❌ Ошибка отправки. Попробуйте позже.");
+	          alert("❌ Ошибка Telegram: " + data.description);
 	        }
 	      })
-	      .catch(() => alert("❌ Сетевая ошибка. Попробуйте позже."));
+	      .catch(error => {
+	        console.error("Ошибка сети:", error);
+	        alert("❌ Сетевая ошибка. Попробуйте позже.");
+	      });
 	  });
 	</script>
+	
+	
+	
 </body>
 </html>
