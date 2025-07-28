@@ -34,14 +34,56 @@
             position: relative;
         }
         
-        /* Particle Background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+        /* Анимированный фон с градиентами */
+        .animated-bg {
+            position: fixed;
             top: 0;
             left: 0;
-            z-index: -1;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #03071e 0%, #03045e 100%);
+            overflow: hidden;
+        }
+        
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.15) 0%, transparent 70%);
+            transform: translateZ(0);
+            will-change: transform, opacity;
+        }
+        
+        .bg-element:nth-child(1) {
+            width: 1200px;
+            height: 1200px;
+            top: -600px;
+            left: -600px;
+            animation: move 25s linear infinite;
+        }
+        
+        .bg-element:nth-child(2) {
+            width: 800px;
+            height: 800px;
+            bottom: -400px;
+            right: -400px;
+            animation: move 30s linear infinite reverse;
+        }
+        
+        .bg-element:nth-child(3) {
+            width: 600px;
+            height: 600px;
+            top: 30%;
+            right: 10%;
+            animation: move 20s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(100px, 0) rotate(180deg); }
+            75% { transform: translate(50px, -50px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
         
         h1, h2, h3, h4, h5 {
@@ -72,6 +114,8 @@
             overflow: hidden;
             z-index: 1;
             box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .btn:before {
@@ -148,13 +192,14 @@
         
         /* Header */
         header {
-            background-color: rgba(3, 7, 30, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: rgba(3, 7, 30, 0.95);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(76, 201, 240, 0.1);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .navbar {
@@ -282,12 +327,14 @@
             position: relative;
         }
         
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            position: relative;
-        }
+		.tech-grid {
+		    display: grid;
+		    grid-template-columns: repeat(3, 1fr); /* десктоп — 3 в ряд */
+		    gap: 1.5rem;
+		    justify-items: center;
+		}
+
+        
         
         .tech-item {
             background: rgba(255, 255, 255, 0.05);
@@ -295,10 +342,9 @@
             border-radius: 15px;
             padding: 30px 20px;
             text-align: center;
-            backdrop-filter: blur(5px);
             transition: var(--transition);
-            transform: translateY(0);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .tech-item:hover {
@@ -337,10 +383,11 @@
             border-radius: 15px;
             padding: 40px 30px;
             text-align: center;
-            backdrop-filter: blur(5px);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .service-card:before {
@@ -435,6 +482,8 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
             transition: var(--transition);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .feature:hover {
@@ -465,12 +514,6 @@
             position: relative;
         }
         
-		section {
-		  will-change: transform;
-		  backface-visibility: hidden;
-		  transform: translateZ(0); /* хак для GPU-ускорения */
-		}
-		
         .circular-image {
             width: 100%;
             max-width: 450px;
@@ -483,6 +526,8 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 0 50px rgba(76, 201, 240, 0.3);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .circular-image:before {
@@ -561,9 +606,10 @@
             border: 1px solid rgba(76, 201, 240, 0.1);
             border-radius: 15px;
             overflow: hidden;
-            backdrop-filter: blur(5px);
             transition: var(--transition);
             position: relative;
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .portfolio-item:hover {
@@ -637,6 +683,8 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
             transition: var(--transition);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .contact-item:hover {
@@ -678,6 +726,8 @@
             transition: var(--transition);
             font-size: 1.3rem;
             border: 1px solid rgba(76, 201, 240, 0.1);
+            transform: translateZ(0);
+            will-change: transform;
         }
         
         .social-links a:hover {
@@ -691,7 +741,6 @@
             background: rgba(255, 255, 255, 0.05);
             padding: 40px;
             border-radius: 15px;
-            backdrop-filter: blur(5px);
             border: 1px solid rgba(76, 201, 240, 0.1);
         }
         
@@ -783,6 +832,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: opacity, transform;
         }
         
         .fade-in.appear {
@@ -828,6 +878,10 @@
             .hero-text h1 {
                 font-size: 3.2rem;
             }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 768px) {
@@ -845,7 +899,6 @@
                 text-align: center;
                 transition: 0.4s;
                 padding: 30px 0;
-                backdrop-filter: blur(10px);
             }
             
             .nav-menu.active {
@@ -872,7 +925,13 @@
                 flex-direction: column;
                 gap: 15px;
             }
-        }
+            
+			@media (max-width: 768px) {
+			    .tech-grid {
+			        grid-template-columns: repeat(3, 1fr); /* мобилка — 2 в ряд */
+			    }
+			}
+        
         
         @media (max-width: 576px) {
             .hero-text h1 {
@@ -897,21 +956,35 @@
             .section-title p {
                 font-size: 1rem;
             }
+            
+            .circular-image {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+        <div class="bg-element"></div>
+    </div>
     
     <!-- Header -->
     <header>
         <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                     <img src="logot2.png" alt="IBDataLink Logo" class="logo-icon" style="height: 90px; width: auto;" />
-                    <h1>IBDataLink</h1>
-                </div>
+	    <div class="container">
+	               <nav class="navbar">
+	                   <div class="logo">
+	                        <img src="logot2.png" alt="IBDataLink Logo" class="logo-icon" style="height: 90px; width: auto;" />
+	                       <h1>IBDataLink</h1>
+	                   </div>
                 
                 <ul class="nav-menu">
                     <li><a href="#home">Главная</a></li>
@@ -940,38 +1013,38 @@
                         <a href="#services" class="btn btn-outline">Наши решения</a>
                     </div>
                 </div>
-                <div class="hero-image fade-in">
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <i class="fas fa-robot tech-icon"></i>
-                            <h3>ИИ Боты</h3>
-                            <p>Умные помощники для бизнеса</p>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fab fa-telegram tech-icon"></i>
-                            <h3>Telegram</h3>
-                            <p>Боты для мессенджеров</p>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-cogs tech-icon"></i>
-                            <h3>Автоматизация</h3>
-                            <p>Оптимизация процессов</p>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-cloud tech-icon"></i>
-                            <h3>Облако</h3>
-                            <p>Масштабируемые решения</p>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-chart-line tech-icon"></i>
-                            <h3>Аналитика</h3>
-                            <p>Данные для решений</p>
-                        </div>
-                        <div class="tech-item">
-                            <i class="fas fa-lock tech-icon"></i>
-                            <h3>Безопасность</h3>
-                            <p>Защита данных</p>
-                        </div>
+              <div class="hero-image fade-in">
+                  <div class="tech-grid">
+                      <div class="tech-item">
+                          <i class="fas fa-robot tech-icon"></i>
+                          <h3>ИИ Боты</h3>
+                          <p>Умные помощники для бизнеса</p>
+                      </div>
+                      <div class="tech-item">
+                          <i class="fab fa-telegram tech-icon"></i>
+                          <h3>Telegram</h3>
+                          <p>Боты для мессенджеров</p>
+                      </div>
+                      <div class="tech-item">
+                          <i class="fas fa-cogs tech-icon"></i>
+                          <h3>Автоматизация</h3>
+                          <p>Оптимизация процессов</p>
+                      </div>
+                      <div class="tech-item">
+                          <i class="fas fa-cloud tech-icon"></i>
+                          <h3>Облако</h3>
+                          <p>Масштабируемые решения</p>
+                      </div>
+                      <div class="tech-item">
+                          <i class="fas fa-chart-line tech-icon"></i>
+                          <h3>Аналитика</h3>
+                          <p>Данные для решений</p>
+                      </div>
+                      <div class="tech-item">
+                          <i class="fas fa-lock tech-icon"></i>
+                          <h3>Безопасность</h3>
+                          <p>Защита данных</p>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -1284,49 +1357,7 @@
         </div>
     </footer>
 
-    <!-- Particle.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Particle Background
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#4cc9f0" },
-                shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#4cc9f0",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                },
-                modes: {
-                    grab: { distance: 140, line_linked: { opacity: 0.8 } },
-                    push: { particles_nb: 4 }
-                }
-            },
-            retina_detect: true
-        });
-
         // Mobile Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -1366,24 +1397,57 @@
                 header.style.backgroundColor = "rgba(3, 7, 30, 0.95)";
                 header.style.boxShadow = "0 2px 15px rgba(0, 0, 0, 0.2)";
             } else {
-                header.style.backgroundColor = "rgba(3, 7, 30, 0.8)";
+                header.style.backgroundColor = "rgba(3, 7, 30, 0.95)";
                 header.style.boxShadow = "none";
             }
         });
         
-        // Scroll animations
+        // Scroll animations with optimized IntersectionObserver
         const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('appear');
+                    // Stop observing after animation to improve performance
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
         
         fadeElements.forEach(element => {
             observer.observe(element);
+        });
+        
+        // Create additional background elements dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedBg = document.querySelector('.animated-bg');
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'bg-element';
+                
+                // Random position and size
+                const size = Math.random() * 600 + 200;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.left = `${left}%`;
+                element.style.top = `${top}%`;
+                element.style.opacity = Math.random() * 0.2 + 0.05;
+                
+                // Random animation
+                const duration = Math.random() * 40 + 20;
+                element.style.animation = `move ${duration}s linear infinite`;
+                
+                animatedBg.appendChild(element);
+            }
         });
     </script>
 </body>
