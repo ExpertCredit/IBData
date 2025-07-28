@@ -933,29 +933,55 @@
 			    }
 			
 				@media (max-width: 768px) {
+				    .about-image {
+				        display: flex;
+				        justify-content: center;
+				    }
+
 				    .circular-image {
-				        width: 90vw;
-				        height: 90vw;
-				        border-radius: 70%;
-				        padding: 1.5rem;
+				        width: 85vw;
+				        height: 85vw;
+				        border-radius: 50%;
+				        padding: 1rem;
+				        display: flex;
+				        align-items: center;
+				        justify-content: center;
+				        text-align: center;
+				        box-sizing: border-box;
+				        overflow: hidden;
+				    }
+
+				    .circular-content {
+				        max-width: 90%;
 				    }
 
 				    .circular-content h3 {
-				        font-size: 1.1rem; /* уменьшили заголовок */
+				        font-size: 1rem;
+				        margin-bottom: 0.5rem;
 				    }
 
 				    .circular-content p {
-				        font-size: 0.95rem; /* основной текст */
+				        font-size: 0.85rem;
+				        margin-bottom: 1rem;
 				    }
 
 				    .stat-value {
-				        font-size: 1.5rem; /* число "150+" */
+				        font-size: 1.3rem;
+				        font-weight: bold;
 				    }
 
 				    .stat-label {
-				        font-size: 0.85rem; /* подпись типа "Проектов" */
+				        font-size: 0.75rem;
+				        margin-bottom: 0.5rem;
+				    }
+
+				    .stats {
+				        display: flex;
+				        flex-direction: column;
+				        gap: 0.5rem;
 				    }
 				}
+				
         
         
         @media (max-width: 576px) {
