@@ -932,29 +932,30 @@
 			        grid-template-columns: repeat(2, 1fr); /* мобилка — 2 в ряд */
 			    }
 			
-			    .circular-image {
-			          width: 90vw;
-			          height: 90vw; /* Сохраняет круг на мобильных */
-			          border-radius: 10%; /* Оставляем круг, если хочешь */
-			          padding: 1.5rem;
-			      }
+				@media (max-width: 768px) {
+				    .circular-image {
+				        width: 90vw;
+				        height: 90vw;
+				        border-radius: 50%;
+				        padding: 1.5rem;
+				    }
 
-			      .circular-content {
-			          width: 100%;
-			      }
+				    .circular-content h3 {
+				        font-size: 1.1rem; /* уменьшили заголовок */
+				    }
 
-			      .stat-item {
-			          margin-bottom: 1rem;
-			      }
+				    .circular-content p {
+				        font-size: 0.95rem; /* основной текст */
+				    }
 
-			      .stat-value {
-			          font-size: 1.8rem;
-			      }
+				    .stat-value {
+				        font-size: 1.5rem; /* число "150+" */
+				    }
 
-			      .stat-label {
-			          font-size: 1rem;
-			      }
-			}
+				    .stat-label {
+				        font-size: 0.85rem; /* подпись типа "Проектов" */
+				    }
+				}
         
         
         @media (max-width: 576px) {
