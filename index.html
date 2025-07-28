@@ -465,6 +465,12 @@
             position: relative;
         }
         
+		section {
+		  will-change: transform;
+		  backface-visibility: hidden;
+		  transform: translateZ(0); /* хак для GPU-ускорения */
+		}
+		
         .circular-image {
             width: 100%;
             max-width: 450px;
@@ -903,7 +909,7 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <i class="fas fa-brain logo-icon"></i>
+                     <img src="logot2.png" alt="IBDataLink Logo" class="logo-icon" style="height: 90px; width: auto;" />
                     <h1>IBDataLink</h1>
                 </div>
                 
