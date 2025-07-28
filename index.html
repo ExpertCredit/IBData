@@ -1511,5 +1511,47 @@
             }
         });
     </script>
+	<script>
+	  const token = '8396544467:AAHbP9KFfXTnJy6tVhk514LBJUTuG8Y2afw';
+	  const chat_id = '5378837277';
+
+	  document.querySelector("form").addEventListener("submit", function (e) {
+	    e.preventDefault();
+
+	    const name = document.getElementById("name").value.trim();
+	    const email = document.getElementById("email").value.trim();
+	    const phone = document.getElementById("phone").value.trim();
+	    const message = document.getElementById("message").value.trim();
+
+	    const text = `
+	<b>📥 Новая заявка с сайта</b>\n
+	👤 Имя: ${name}
+	📧 Email: ${email}
+	📞 Телефон: ${phone}
+	📝 Сообщение: ${message}
+	    `;
+
+	    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+	      method: "POST",
+	      headers: {
+	        "Content-Type": "application/json",
+	      },
+	      body: JSON.stringify({
+	        chat_id: chat_id,
+	        text: text,
+	        parse_mode: "HTML",
+	      }),
+	    })
+	      .then((res) => {
+	        if (res.ok) {
+	          alert("✅ Заявка отправлена!");
+	          e.target.reset();
+	        } else {
+	          alert("❌ Ошибка отправки. Попробуйте позже.");
+	        }
+	      })
+	      .catch(() => alert("❌ Сетевая ошибка. Попробуйте позже."));
+	  });
+	</script>
 </body>
 </html>
